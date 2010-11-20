@@ -37,6 +37,7 @@
 	// Include extensions to native objects
 	eval(include("{$ScriptPath}lib\\Math.inc.js"));
 	eval(include("{$ScriptPath}lib\\String.inc.js"));
+	eval(include("{$ScriptPath}lib\\Array.inc.js"));
 	
     // Include other libraries
 	eval(include("{$ScriptPath}lib\\Function.withRetry.inc.js"));
