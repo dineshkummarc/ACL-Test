@@ -4,29 +4,28 @@ Testing SplFileInfo::getType().
 Retrieve the file type.
 --CREDIT--
 Kris Craig <a-krcrai@microsoft.com>
+--PFTT--
+filesystem=yes
+populate=file,dir
+link=symbolic
 --FILE--
 <?php
-
-$testfile = ___FILESDIR___ . "\\existing_file";
-$testdir = ___FILESDIR___;
-$testlink = ___FILESDIR___ . "\\symlink_to_existing_file";
-$testlink2 = ___FILESDIR___ . "\\symlink_to_existing_folder";
-
-$fileinfo = new SplFileInfo( $testfile );
-var_dump( $fileinfo->getType() );
-
-$fileinfo = new SplFileInfo( $testdir );
-var_dump( $fileinfo->getType() );
-
-$fileinfo = new SplFileInfo( $testlink );
-var_dump( $fileinfo->getType() );
-
-$fileinfo = new SplFileInfo( $testlink2 );
-var_dump( $fileinfo->getType() );
-
+// targets
+$targets = array(
+       'file'       => 'existing_file',
+       'folder'     => 'existing_folder',
+       'fileLink'   => 'symbolic'.DIRECTORY_SEPARATOR.'existing_file',
+       'folderLink' => 'symbolic'.DIRECTORY_SEPARATOR.'existing_folder',
+);
+// Iterate and test
+foreach( $targets as $k => $target ) {
+       echo $k . ': ';
+	   $fileinfo = new SplFileInfo( ___FILESDIR___ . DIRECTORY_SEPARATOR . $target );
+	   var_dump( $fileinfo->getType() );
+}
 ?>
 --EXPECT--
-string(4) "file"
-string(3) "dir"
-string(4) "link"
-string(4) "link"
+file: string(4) "file"
+folder: string(3) "dir"
+fileLink: string(4) "link"
+folderLink: string(4) "link"
