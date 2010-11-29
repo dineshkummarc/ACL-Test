@@ -28,7 +28,7 @@ print $testfileprefix . "\r\n" . $fileinfo->getBasename( $testfilesuffix );
 
 ?>
 --EXPECT--
-existing_text_file.txt
-existing_text_file.txt
-existing_text_file
-existing_text_file
+file.txt
+file.txt
+file
+file

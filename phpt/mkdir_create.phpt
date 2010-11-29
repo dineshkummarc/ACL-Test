@@ -1,8 +1,17 @@
 --TEST--
 mkdir() 
+--CREDITS--
+Ryan Biesemeyer <v-ryanbi@microsoft.com>
+--PFTT--
+filesystem=yes
 --FILE--
 <?php
-var_dump(@mkdir(___FILESDIR___. DIRECTORY_SEPARATOR ."folder",0777,true));
+$newFolder = ___FILESDIR___ . DIRECTORY_SEPARATOR ."new_folder";
+echo 'folder exists: '; var_dump( file_exists( $newFolder ) );
+echo 'mkdir output: '; var_dump( @mkdir( $newFolder, 0777, true ) );
+echo 'folder exists: '; var_dump( file_exists( $newFolder ) );
 ?>
 --EXPECT--
-bool(true)
+folder exists: bool(false)
+mkdir output: bool(true)
+folder exists: bool(true)
