@@ -3,12 +3,16 @@ Testing SplFileObject::key().
 --CREDITS--
 Suman Madavapeddi <v-sumada@microsoft.com>
 Kris Craig <a-krcrai@microsoft.com>
+Ryan Biesemeyer <v-ryanbi@microsoft.com>
+--PFTT--
+filesystem=yes
+populate=csv
 --DESCRIPTION--
 Get the line number.
 --FILE--
 <?php
 
-$file = ___FILESDIR___ . "\\existing_csv_file.csv";
+$file = ___FILESDIR___ . "\\file.csv";
 
 $fo = new SplFileObject( $file );
 

@@ -4,12 +4,16 @@ Testing SplFileInfo::getFilename().
 Get the name of a file locally or from URL.
 --CREDIT--
 Kris Craig <a-krcrai@microsoft.com>
+Ryan Biesemeyer <v-ryanbi@microsoft.com>
+--PFTT--
+filesystem=yes
+populate=txt
 --FILE--
 <?php
 
 /* PFTT constants.  --Kris */
 $testdir = ___FILESDIR___;
-$testfile = "existing_text_file.txt";
+$testfile = "file.txt";
 
 $testfileprefix = substr( $testfile, 0, strrpos( $testfile, "." ) );
 $testfilesuffix = strrchr( $testfile, "." );
@@ -24,15 +28,13 @@ $remotefilepath = $remotefileserver . "/" . $remotefilename;
 /* Do the test and output the results.  --Kris */
 $fileinfo = new SplFileInfo( $testfilepath );
 
-print $testfile . "\r\n" . $fileinfo->getFilename() . "\r\n";
+print 'Local file:  '; var_dump( $fileinfo->getFilename() );
 
 $fileinfo = new SplFileInfo( $remotefilepath );
 
-print $remotefilename . "\r\n" . $fileinfo->getFilename();
+print 'Remote file: '; var_dump( $fileinfo->getFilename() );
 
 ?>
 --EXPECT--
-existing_text_file.txt
-existing_text_file.txt
-index.php
-index.php
+Local file:  string(8) "file.txt"
+Remote file: string(9) "index.php"

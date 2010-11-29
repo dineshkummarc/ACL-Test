@@ -4,6 +4,10 @@ Testing SplFileInfo::getInode().
 Get the inode number for the filesystem object.  This test is designed specifically for Windows.
 --CREDIT--
 Kris Craig <a-krcrai@microsoft.com>
+Ryan Biesemeyer <v-ryanbi@microsoft.com>
+--PFTT--
+filesystem=yes
+populate=file
 --FILE--
 <?php
 

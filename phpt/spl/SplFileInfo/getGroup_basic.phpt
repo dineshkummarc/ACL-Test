@@ -4,6 +4,9 @@ Testing SplFileInfo::getGroup().
 Check to see what group a file belongs to.
 --CREDIT--
 Kris Craig <a-krcrai@microsoft.com>
+Ryan Biesemeyer <v-ryanbi@microsoft.com>
+--PFTT--
+filesystem=yes
 --FILE--
 <?php
 
@@ -29,7 +32,9 @@ fclose( $handle );
 /* Do the test and output the results.  --Kris */
 $fileinfo1 = new SplFileInfo( $testfile1 );
 $fileinfo2 = new SplFileInfo( $testfile2 );
+echo 'Group Numeric: ';
 var_dump( is_numeric( $fileinfo1->getGroup() ) );
+echo 'Group Match:   ';
 var_dump( $fileinfo1->getGroup() == $fileinfo2->getGroup() );
 
 /* Cleanup.  --Kris */
@@ -38,5 +43,5 @@ unlink( $testfile2 );
 
 ?>
 --EXPECT--
-bool(true)
-bool(true)
+Group Numeric: bool(true)
+Group Match:   bool(true)

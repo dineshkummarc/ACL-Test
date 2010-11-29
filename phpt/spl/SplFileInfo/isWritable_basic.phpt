@@ -4,6 +4,10 @@ Testing SplFileInfo::isWritable().
 Check to see if a file is writable.
 --CREDIT--
 Kris Craig <a-krcrai@microsoft.com>
+Ryan Biesemeyer <v-ryanbi@microsoft.com>
+--PFTT--
+filesystem=yes
+populate=file
 --FILE--
 <?php
 

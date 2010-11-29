@@ -4,6 +4,10 @@ Testing SplFileInfo::getPathInfo() and SplFileInfo::getRealPath().
 Gets an SplFileInfo object for the path.
 --CREDIT--
 Kris Craig <a-krcrai@microsoft.com>
+Ryan Biesemeyer <v-ryanbi@microsoft.com>
+--PFTT--
+filesystem=yes
+populate=file
 --FILE--
 <?php
 

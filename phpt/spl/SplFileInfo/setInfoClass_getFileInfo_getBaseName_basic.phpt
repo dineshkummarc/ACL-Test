@@ -4,6 +4,10 @@ Testing SplFileInfo::setInfoClass() and SplFileInfo::getFileInfo().
 Set a file class and retrieve.  Requires the use of getBaseName() to output predictable results.
 --CREDIT--
 Kris Craig <a-krcrai@microsoft.com>
+Ryan Biesemeyer <v-ryanbi@microsoft.com>
+--PFTT--
+filesystem=yes
+populate=all
 --FILE--
 <?php
 

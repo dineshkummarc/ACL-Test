@@ -1,9 +1,9 @@
 config = {
 	'testBenchFactors': {
-			'modes': 			testModeStackControl
+			'modes': 			testModeStackCLI
 		,	'contextsScripts': 	testContextLocal
 		,	'contextsFiles': 	testContextLocal
-		,	'cases': 			testCasesIsLink
+		,	'cases': 			testCasesAll
 		}
 ,	'log': '{$ScriptPath}logs\\'.Format() + ( new Date ).iso8601( )
 ,	'output': {

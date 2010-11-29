@@ -4,6 +4,10 @@ Testing SplFileInfo::setFileClass().
 Sets the class name used with openFile().
 --CREDIT--
 Kris Craig <a-krcrai@microsoft.com>
+Ryan Biesemeyer <v-ryanbi@microsoft.com>
+--PFTT--
+filesystem=yes
+populate=all
 --FILE--
 <?php
 

@@ -3,6 +3,10 @@ Testing SplFileObject::flock().
 --CREDITS--
 Suman Madavapeddi <v-sumada@microsoft.com>
 Kris Craig <a-krcrai@microsoft.com>
+Ryan Biesemeyer <v-ryanbi@microsoft.com>
+--PFTT--
+filesystem=yes
+populate=all
 --DESCRIPTION--
 Portable file locking.
 --FILE--

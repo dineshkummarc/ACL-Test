@@ -4,6 +4,10 @@ Testing SplFileInfo::openFile().
 Gets an SplFileObject object for the file.
 --CREDIT--
 Kris Craig <a-krcrai@microsoft.com>
+Ryan Biesemeyer <v-ryanbi@microsoft.com>
+--PFTT--
+filesystem=yes
+populate=all
 --FILE--
 <?php
 

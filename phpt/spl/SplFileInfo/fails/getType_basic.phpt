@@ -4,6 +4,7 @@ Testing SplFileInfo::getType().
 Retrieve the file type.
 --CREDIT--
 Kris Craig <a-krcrai@microsoft.com>
+Ryan Biesemeyer <v-ryanbi@microsoft.com>
 --PFTT--
 filesystem=yes
 populate=file,dir

@@ -4,6 +4,9 @@ Testing SplFileInfo::getSize().
 Get the size (in bytes) of a file.
 --CREDIT--
 Kris Craig <a-krcrai@microsoft.com>
+Ryan Biesemeyer <v-ryanbi@microsoft.com>
+--PFTT--
+filesystem=yes
 --FILE--
 <?php
 
