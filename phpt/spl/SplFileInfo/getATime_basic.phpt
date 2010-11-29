@@ -4,6 +4,10 @@ Testing SplFileInfo::getATime().
 Check to see when a file was last accessed.
 --CREDIT--
 Kris Craig <a-krcrai@microsoft.com>
+Ryan Biesemeyer <v-ryanbi@microsoft.com>
+--PFTT--
+filesystem=yes
+populate=file
 --FILE--
 <?php
 
@@ -13,7 +17,7 @@ $testfile = ___FILESDIR___ . "\\existing_file";
 $fileinfo = new SplFileInfo( $testfile );
 
 /* Allow +/- 5 seconds to account for CPU lag.  --Kris */
-var_dump( ( $fileinfo->getATime() <= (time() + 5) || $fileinfo->getATime() >= (time() - 5) ) );
+var_dump( abs( $fileinfo->getATime() - time() ) < 5 );
 
 ?>
 --EXPECT--

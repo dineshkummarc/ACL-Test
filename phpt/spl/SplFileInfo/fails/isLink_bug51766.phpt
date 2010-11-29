@@ -4,21 +4,29 @@ Testing SplFileInfo::isFile().
 Check to see if a filesystem object is a file.
 --CREDIT--
 Kris Craig <a-krcrai@microsoft.com>
+Ryan Biesemeyer <v-ryanbi@microsoft.com>
+--PFTT--
+filesystem=true
+populate=file,dir
+link=symbolic
 --FILE--
 <?php
-
-/* This can be changed to whatever you wish.  */
-$testfilelink = ___FILESDIR___ . "\\symlink_to_existing_file";
-$testdirlink = ___FILESDIR___ . "\\symlink_to_existing_folder";
-
-/* Do the test and output the results.  --Kris */
-$fileinfo = new SplFileInfo( $testfilelink );
-var_dump( $fileinfo->isLink() );
-
-$fileinfo = new SplFileInfo( $testdirlink );
-var_dump( $fileinfo->isLink() );
-
+// targets
+$targets = array(
+       'file'       => 'existing_file',
+       'folder'     => 'existing_folder',
+       'fileLink'   => 'symbolic'.DIRECTORY_SEPARATOR.'existing_file',
+       'folderLink' => 'symbolic'.DIRECTORY_SEPARATOR.'existing_folder',
+);
+// Iterate and test
+foreach( $targets as $k => $target ) {
+	echo $k . ': ';
+	$fileinfo = new SplFileInfo( ___FILESDIR___ . DIRECTORY_SEPARATOR . $target );
+	var_dump( $fileinfo->isLink() );
+}
 ?>
 --EXPECT--
-bool(true)
-bool(true)
+file: bool(false)
+folder: bool(false)
+fileLink: bool(true)
+folderLink: bool(true)

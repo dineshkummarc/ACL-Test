@@ -4,6 +4,10 @@ Testing SplFileInfo::isReadable().
 Check to see if a file is readable.
 --CREDIT--
 Kris Craig <a-krcrai@microsoft.com>
+Ryan Biesemeyer <v-ryanbi@microsoft.com>
+--PFTT--
+filesystem=yes
+populate=file
 --FILE--
 <?php
 

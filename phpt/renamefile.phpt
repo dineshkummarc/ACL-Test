@@ -1,14 +1,20 @@
 --TEST--
 Rename a file() 
 --FILE--
+--CREDIT--
+Ryan Biesemeyer <v-ryanbi@microsoft.com>
+--PFTT--
+filesystem=yes
+populate=file
+--FILE--
 <?php
-$newname=___FILESDIR___. DIRECTORY_SEPARATOR .'newname';
-$testFile=___FILESDIR___. DIRECTORY_SEPARATOR .'existing_file';
-var_dump(rename($testFile, $newname)); 
-var_dump(file_exists($newname));  
-var_dump(file_exists($testFile));
+$src_path = ___FILESDIR___ . DIRECTORY_SEPARATOR . "existing_file";
+$dest_path = ___FILESDIR___ . DIRECTORY_SEPARATOR . "moved_file";
+echo "rename output: "; var_dump( rename( $src_path , $dest_path ) ); 
+echo "source exists: "; var_dump( file_exists( $src_path ) ); 
+echo "dest exists:   "; var_dump( file_exists( $dest_path ) ); 
 ?>
---EXPECT--	
-bool(true)
-bool(true)
-bool(false)
+--EXPECTF--	
+rename output: bool(true)
+source exists: bool(false)
+dest exists:   bool(true)

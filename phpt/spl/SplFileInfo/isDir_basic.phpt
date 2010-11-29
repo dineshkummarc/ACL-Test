@@ -4,16 +4,29 @@ Testing SplFileInfo::isDir().
 Check to see if a filesystem object is a directory.
 --CREDIT--
 Kris Craig <a-krcrai@microsoft.com>
+Ryan Biesemeyer <v-ryanbi@microsoft.com>
+--PFTT--
+filesystem=yes
+populate=dir,file
 --FILE--
 <?php
 
 /* This can be changed to whatever you wish.  */
-$testdir = ___FILESDIR___;
+$targets = array(
+	'file'		=> 'existing_file',
+	'folder'	=> 'existing_folder',
+	'missing'	=> 'not_here',
+);
 
 /* Do the test and output the results.  --Kris */
-$fileinfo = new SplFileInfo( $testdir );
-var_dump( $fileinfo->isDir() );
+foreach( $targets as $k => $target ) {
+	echo $k . ' : ';
+	$fileinfo = new SplFileInfo( ___FILESDIR___ . DIRECTORY_SEPARATOR . $target );
+	var_dump( $fileinfo->isDir() );
+}
 
 ?>
 --EXPECT--
-bool(true)
+file : bool(false)
+folder : bool(true)
+missing : bool(false)

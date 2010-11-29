@@ -2,8 +2,15 @@
 Testing SplFileInfo::getMTime().
 --DESCRIPTION--
 Check to see when a file was last modified.
+@uses fopen()
+@uses fputs()
+@uses flose()
 --CREDIT--
 Kris Craig <a-krcrai@microsoft.com>
+Ryan Biesemeyer <v-ryanbi@microsoft.com>
+--PFTT--
+filesystem=yes
+populate=file
 --FILE--
 <?php
 
@@ -20,7 +27,7 @@ fclose( $handle );
 $fileinfo = new SplFileInfo( $testfile );
 
 /* Allow +/- 5 seconds to account for CPU lag.  --Kris */
-var_dump( ( $fileinfo->getMTime() <= (time() + 5) || $fileinfo->getMTime() >= (time() - 5) ) );
+var_dump( abs( $fileinfo->getMTime() - time() ) < 5 );
 
 ?>
 --EXPECT--

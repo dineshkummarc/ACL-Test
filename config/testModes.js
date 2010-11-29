@@ -5,15 +5,3 @@ var testModeStackCompare = (new TestModeStack)
 	.addStack( testModeStackPatched )
 ;
 var testModeStackCLI = TestModeStackBuilder.build('C:\\php-builds\\control',TMSB['CLI-NTS']|TMSB['CLI-ZTS'],'control');
-
-testModeApache = TestModeStackBuilder.build('C:\\php-builds\\control',TMSB.APACHE_MODPHP,'r304084');
-testModeStackApacheMultiple = (new TestModeStack)
-	.addStack(testModeApache)
-	.addStack(testModeApache)
-	.addStack(testModeApache)
-	.addStack(testModeApache)
-	.addStack(testModeApache)
-	.addStack(testModeApache)
-	.addStack(testModeApache)
-	.addStack(testModeApache)
-;

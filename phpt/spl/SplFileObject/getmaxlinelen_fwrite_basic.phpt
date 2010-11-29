@@ -3,6 +3,10 @@ Testing SplFileObject::getMaxLineLen().
 --CREDITS--
 Suman Madavapeddi <v-sumada@microsoft.com>
 Kris Craig <a-krcrai@microsoft.com>
+Ryan Biesemeyer <v-ryanbi@microsoft.com>
+--PFTT--
+filesystem=yes
+populate=all
 --DESCRIPTION--
 Get the maximum line length.
 --FILE--

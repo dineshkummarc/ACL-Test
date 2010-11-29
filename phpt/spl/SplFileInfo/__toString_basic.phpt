@@ -4,6 +4,10 @@ Testing SplFileInfo::__toString().
 Returns the path to the file as a string.
 --CREDIT--
 Kris Craig <a-krcrai@microsoft.com>
+Ryan Biesemeyer <v-ryanbi@microsoft.com>
+--PFTT--
+filesystem=yes
+populate=all
 --FILE--
 <?php
 

@@ -3,6 +3,9 @@ Testing SplFileObject::fgetss().
 --CREDITS--
 Suman Madavapeddi <v-sumada@microsoft.com>
 Kris Craig <a-krcrai@microsoft.com>
+Ryan Biesemeyer <v-ryanbi@microsoft.com>
+--PFTT--
+filesystem=yes
 --DESCRIPTION--
 Gets a line from a file and strips HTML tags.
 --FILE--

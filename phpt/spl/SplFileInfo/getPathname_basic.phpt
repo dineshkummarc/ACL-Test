@@ -4,6 +4,10 @@ Testing SplFileInfo::getPathname().
 Retrieve the path name of a file.
 --CREDIT--
 Kris Craig <a-krcrai@microsoft.com>
+Ryan Biesemeyer <v-ryanbi@microsoft.com>
+--PFTT--
+filesystem=yes
+populate=file
 --FILE--
 <?php
 
