@@ -30,5 +30,5 @@ foreach( $targets as $k => $target ) {
 --EXPECT--
 file : bool(false)
 exe : bool(true)
-folder : bool(true)
+folder : bool(false)
 missing : bool(false)
