@@ -23,7 +23,7 @@ $targets = array(
 foreach( $targets as $k => $target ) {
 	echo $k . ' : ';
 	$fileinfo = new SplFileInfo( ___FILESDIR___ . DIRECTORY_SEPARATOR . $target );
-	var_dump( $fileinfo->isDir() );
+	var_dump( $fileinfo->isExecutable() );
 }
 
 ?>
