@@ -2,6 +2,9 @@
 Testing SplFileInfo::getGroup().
 --DESCRIPTION--
 Check to see what group a file belongs to.
+@uses fopen()
+@uses fputs()
+@uses fclose()
 --CREDIT--
 Kris Craig <a-krcrai@microsoft.com>
 Ryan Biesemeyer <v-ryanbi@microsoft.com>

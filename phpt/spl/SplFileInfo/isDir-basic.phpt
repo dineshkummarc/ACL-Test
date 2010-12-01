@@ -7,7 +7,7 @@ Kris Craig <a-krcrai@microsoft.com>
 Ryan Biesemeyer <v-ryanbi@microsoft.com>
 --PFTT--
 filesystem=yes
-populate=dir,file
+populate=dir,file,exe
 --FILE--
 <?php
 
@@ -15,6 +15,7 @@ populate=dir,file
 $targets = array(
 	'file'		=> 'existing_file',
 	'folder'	=> 'existing_folder',
+	'exe'		=> 'existential.exe',
 	'missing'	=> 'not_here',
 );
 
@@ -29,4 +30,5 @@ foreach( $targets as $k => $target ) {
 --EXPECT--
 file : bool(false)
 folder : bool(true)
+exe : bool(false)
 missing : bool(false)

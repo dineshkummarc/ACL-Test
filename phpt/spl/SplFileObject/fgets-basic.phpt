@@ -1,5 +1,5 @@
 --TEST--
-Testing SplFileObject::fscanf().
+Testing SplFileObject::fgets().
 --CREDITS--
 Suman Madavapeddi <v-sumada@microsoft.com>
 Kris Craig <a-krcrai@microsoft.com>
@@ -8,19 +8,28 @@ Ryan Biesemeyer <v-ryanbi@microsoft.com>
 filesystem=yes
 populate=csv
 --DESCRIPTION--
-Parses input from a file according to a format.
+Gets a line from a file.
 --FILE--
 <?php
 
 $file = ___FILESDIR___ . "\\file.csv";
+$fo = new SplFileObject( $file );
 
-$fo = new SplFileObject($file);
 
-var_dump( $fo->fscanf( "%s" ) );
+$i=0;
+while( !$fo->eof() && $i++ < 100 ){
+	print $fo->fgets();
+	print ":\n"; // to show that we're not just getting it all at once
+}
 
 ?>
 --EXPECT--
-array(1) {
-  [0]=>
-  string(7) "a,b,c,d"
-}
+a,b,c,d
+:
+1,1,1
+:
+2,2,2
+:
+3,3,3
+:
+4,4,4:

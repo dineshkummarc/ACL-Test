@@ -1,26 +1,25 @@
 --TEST--
-Testing SplFileObject::getCurrentLine().
+Testing SplFileObject::getCsvControl().
 --CREDITS--
 Suman Madavapeddi <v-sumada@microsoft.com>
 Kris Craig <a-krcrai@microsoft.com>
 Ryan Biesemeyer <v-ryanbi@microsoft.com>
 --PFTT--
 filesystem=yes
-populate=all
+populate=csv
 --DESCRIPTION--
-Alias of SplFileObject::fgets().
+Get the delimiter and enclosure character for CSV.
 --FILE--
 <?php
 
 $file = ___FILESDIR___ . "\\file.csv";
 
 $fo = new SplFileObject( $file );
-$fo->seek( 1 );
-
-print $fo->getCurrentLine();
-print $fo->getCurrentLine();
+$ctrl =  $fo->getCsvControl();
+echo 'delimeter: '; var_dump($ctrl[0]);
+echo 'enclosure: '; var_dump($ctrl[1]);
 
 ?>
 --EXPECT--
-2,2,2
-3,3,3
+delimeter: string(1) ","
+enclosure: string(1) """

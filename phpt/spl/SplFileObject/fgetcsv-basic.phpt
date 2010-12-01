@@ -1,5 +1,5 @@
 --TEST--
-Testing SplFileObject::fseek().
+Testing SplFileObject::fgetcsv().
 --CREDITS--
 Suman Madavapeddi <v-sumada@microsoft.com>
 Kris Craig <a-krcrai@microsoft.com>
@@ -8,19 +8,28 @@ Ryan Biesemeyer <v-ryanbi@microsoft.com>
 filesystem=yes
 populate=csv
 --DESCRIPTION--
-Seek to a position.
+Gets a line from a file and parses as CSV fields.
 --FILE--
 <?php
 
 $file = ___FILESDIR___ . "\\file.csv";
-
 $fo = new SplFileObject( $file );
-$fo->fseek( 0 );
 
-$data = $fo->fgets();
-
-print $data;
+print_r( $fo->fgetcsv() );
+print_r( $fo->fgetcsv() ); // make sure it advances the cursor
 
 ?>
 --EXPECT--
-a,b,c,d
+Array
+(
+    [0] => a
+    [1] => b
+    [2] => c
+    [3] => d
+)
+Array
+(
+    [0] => 1
+    [1] => 1
+    [2] => 1
+)

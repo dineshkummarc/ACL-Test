@@ -15,19 +15,10 @@ $file = ___FILESDIR___ . "\\existing_file";
 
 $file = new SplFileObject( $file, "w+" );
 
-if ( $file->flock( LOCK_EX ) )
-{
-	// do an exclusive lock
-	print "LOCKED";
-	
-	// release the lock    
-	$file->flock( LOCK_UN );
-}
-else
-{
-	print "Couldn't get the lock!";
-}
-	
+echo 'Locked: '; var_dump( $file->flock( LOCK_EX ) );
+echo 'Unlocked: '; var_dump( $file->flock( LOCK_UN ) );
+
 ?>
 --EXPECT--
-LOCKED
+Locked: bool(true)
+Unlocked: bool(true)

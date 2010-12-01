@@ -15,12 +15,27 @@ Seek to the specified line.
 $file = ___FILESDIR___ . "\\file.csv";
 
 $fo = new SplFileObject( $file );
-$fo->seek( 0 );
 
-$data = $fo->fgets();
-
-print $data;
+$seekTargets = array(
+	2,
+	0,
+	3,
+);
+foreach( $seekTargets as $seek ) {
+	$fo->seek( $seek );
+	echo 'key: '; var_dump( $fo->key() );
+	echo 'contents: '; var_export( $fo->current() );
+	echo "\n";
+}
 
 ?>
 --EXPECT--
-a,b,c,d
+key: int(2)
+contents: '2,2,2
+'
+key: int(0)
+contents: 'a,b,c,d
+'
+key: int(3)
+contents: '3,3,3
+'

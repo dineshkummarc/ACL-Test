@@ -9,6 +9,7 @@ filesystem=yes
 populate=all
 --DESCRIPTION--
 Flushes the output to the file.
+@todo: make output to flush so we can tell if it is actually working.
 --FILE--
 <?php
 
