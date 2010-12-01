@@ -3,16 +3,18 @@ config = {
 			'modes': 			testModeStackCLI
 		,	'contextsScripts': 	testContextLocal
 		,	'contextsFiles': 	testContextLocal
-		,	'cases': 			testCasesIsLink
+		,	'cases': 			testCasesAll
 		}
-,	'log': '{$ScriptPath}logs\\'.Format() + ( new Date ).getTime()
+,	'log': '{$ScriptPath}logs\\'.Format() + ( new Date ).iso8601( )
 ,	'output': {
 			'stdout':	{
 					'level':	LOG.VERBOSE
 								^LOG.IIS_CONFIGURE
 					}
 		,	'file' 	:	{
-					'level':LOG.VERBOSE ^LOG.PREFLIGHT_SUMMARY
+					'level':	LOG.VERBOSE 
+								^LOG.PREFLIGHT_SUMMARY
+								^LOG.IIS_CONFIGURE
 				,	'path':	'{config.log}\\output.log'
 			}
 		}
