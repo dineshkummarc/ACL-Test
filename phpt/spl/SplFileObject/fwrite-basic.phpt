@@ -6,13 +6,12 @@ Kris Craig <a-krcrai@microsoft.com>
 Ryan Biesemeyer <v-ryanbi@microsoft.com>
 --PFTT--
 filesystem=yes
-populate=all
 --DESCRIPTION--
 Writing with two parameters length < and > input string length.
 --FILE--
 <?php
 
-$file = ___FILESDIR___ . "\\existing_file";
+$file = ___FILESDIR___ . "\\new_file";
 
 $obj = New SplFileObject( $file, "w" );
 $obj->fwrite( "test_write", 4 );

@@ -16,7 +16,13 @@ $testcsvfile = ___FILESDIR___ . "\\file.csv";
 $fo = new SplFileObject( $testcsvfile );
 
 var_dump( $fo->fgetc() );
+var_dump( $fo->fgetc() );
+var_dump( $fo->fgetc() );
+var_dump( $fo->fgetc() );
 
 ?>
 --EXPECT--
 string(1) "a"
+string(1) ","
+string(1) "b"
+string(1) ","

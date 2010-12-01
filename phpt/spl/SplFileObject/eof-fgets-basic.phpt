@@ -15,11 +15,15 @@ Reached the end of file.
 $testcsvfile = ___FILESDIR___ . "\\file.csv";
 $fo = new SplFileObject( $testcsvfile, "r" );
 
-if ( !$fo->eof() )
-{
-	print "EOF Reached";
+$i=0;
+while( !$fo->eof() ){
+	$fo->fgets();
+	$i++;
+	if($i>100) {
+		die('EOF not reached. Hit loop limit.');
+	}
 }
-
+print "EOF Reached";
 ?>
 --EXPECT--
 EOF Reached

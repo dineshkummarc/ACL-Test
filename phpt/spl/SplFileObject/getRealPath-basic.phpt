@@ -1,5 +1,5 @@
 --TEST--
-Testing SplFileObject::getMaxLineLen().
+Testing SplFileObject::getRealPath().
 --CREDITS--
 Suman Madavapeddi <v-sumada@microsoft.com>
 Kris Craig <a-krcrai@microsoft.com>
@@ -8,18 +8,16 @@ Ryan Biesemeyer <v-ryanbi@microsoft.com>
 filesystem=yes
 populate=all
 --DESCRIPTION--
-Get the maximum line length.
+SplFileObject::getRealPath() Which inherits SplFileObject().
 --FILE--
 <?php
 
 $testFile = ___FILESDIR___ . "\\existing_file";
 
-$fo = new SplFileObject( $testFile, "w" );
-$fo->fwrite( "test_write" );
+$fo = new SplFileObject( $testFile );
 
-$fo->setMaxLineLen( 3 );  
-print $fo->getMaxLineLen();
+print $fo->getRealPath();
 
 ?>
 --EXPECT--
-3
+___FILESDIR___\existing_file
