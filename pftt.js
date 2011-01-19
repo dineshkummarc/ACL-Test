@@ -52,6 +52,7 @@
 	eval(include("{$ScriptPath}lib\\TestModeHTTP\\IIS.inc.js"));
 	eval(include("{$ScriptPath}lib\\TestModeHTTP\\Apache.inc.js"));
 	eval(include("{$ScriptPath}lib\\TestCase.inc.js"));
+	eval(include("{$ScriptPath}lib\\TestExpect.inc.js"));
 	eval(include('{$ScriptPath}\\lib\\TestBench.inc.js'));
 	
 	WScript.StdOut.WriteLine($ScriptPath);
