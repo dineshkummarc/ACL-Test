@@ -48,6 +48,7 @@
 	eval(include("{$ScriptPath}lib\\TestBenchFactor.inc.js"));
 	eval(include("{$ScriptPath}lib\\TestResult.inc.js"));
 	eval(include("{$ScriptPath}lib\\TestContext.inc.js"));
+	eval(include("{$ScriptPath}lib\\PhpConfig.inc.js"));
 	eval(include("{$ScriptPath}lib\\TestMode.inc.js"));
 	eval(include("{$ScriptPath}lib\\TestModeHTTP\\IIS.inc.js"));
 	eval(include("{$ScriptPath}lib\\TestModeHTTP\\Apache.inc.js"));
