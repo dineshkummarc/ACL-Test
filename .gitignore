@@ -3,4 +3,4 @@ logs
 *.diff
 *.diff.rej
 temp
-.pftt-debug.js
+pftt.debug.js
