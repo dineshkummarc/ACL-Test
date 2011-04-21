@@ -1,4 +1,4 @@
-config = {
+config.set({
 	'testBenchFactors': {
 			'modes': 			testModeStackCLI
 		,	'contextsScripts': 	testContextLocal
@@ -30,4 +30,4 @@ config = {
 ,	'results': {
 			'pathTemplate':'{config.log}\\{testMode}\\{testContextScripts}\\{testContextFiles}'
 		}
-};
+});
