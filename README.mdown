@@ -1,0 +1,51 @@
+# PHP Functional Test Tool
+
+PFTT is a BSD-licensed automated testing framework for PHP, built to systematically identify bugs in complex PHP installations. Its components are responsible for installing PHP in various configurations, setting up complex filesystem scenarios, and running tests in every possible combination of the various factors with which it is configured. 
+
+## Usage
+
+PFTT must be setup in a clean environment (no existing PHP installations) and is executed in the Windows Scripting Host. Arguments passed to the command line are evaluated as JScript, so you can easily call any function or method, but the most common usage is to run all currently-configured tests:
+
+    > pftt runTestsFromConfig();
+
+## How it works
+
+PFTT is an object-oriented application, so its functionality is best described by the classes of objects that are created.
+
+### TestBenchFactor
+Three major factors go into the running of each test scenario, and the subclasses that define them inherit analysis and result-tracking behavior from `TestBenchFactor`. These factors are:
+
+#### TestCase
+
+PFTT works with an extended subset of the PHP-standard [phpt test file format](http://qa.php.net/write-test.php), and instances of TestCase are essentially a wrapper around a single .phpt test file. The `TestCase` class is responsible for parsing the file into its respective parts, returning parsed sections of the phpt when requested, and returning the appropriate instance of `ResultTester`, depending on what [type](http://qa.php.net/write-test.php#expectf) of expectation the test case has.
+
+#### TestContext
+
+File access needs to work consistently, regardless of where the file is stored &051; no matter if the file is on the local filesystem, a remote SMB share or on a DFS cluster. The `TestContext` class and its children are responsible for all functionality surrounding the setup of these filesystem scenarios, whether it is simply creating an ACL-blocking temporary directory on the local filesystem, or mounting a DFS volume with access credentials.
+
+#### TestMode
+
+PHP scripts can be executed in a variety of ways: via Command-Line, over HTTP via IIS and FastCGI, or via Apache's ModPHP. The `TestMode` class and its subclasses are responsible for providing a consistent interface for setting up PHP in any of these configurations, configuring ini directives for PHP (which may involve restarting the HTTP server, if applicable), and cleaning up neatly when the test has been run.
+
+### Putting it all together
+
+The `TestBench` is responsible for putting the various `TestBenchFactor`s together and iterating through all applicable combinations. For each unique combination of `TestMode`, `TestCase`, and optionally one or more `TestContext`s, the script is passed through `TestBench::runOne()`, which does the heavy lifting.
+
+ - Try:
+   - Ensure that the TestCase is compatible with the testing framework,
+     - Call `TestCase#detectBork()` to find problems with the phpt file itself, throwing an instance of TestResultBork if necessary
+     - Call `TestCase#detectUnsupportedFeatures()` to detect phpt features that are not yet implemented in PFTT, throwing an instance of TestResultSkip if necessary
+   - Setup the `TestMode` and `TestContext` objects if they haven't already been set up
+   - Configure the `TestCase`, replacing PFTT constants with information about the `TestMode` and `TestContext`s
+   - Configure the `TestMode` with ini directives from the `TestCase` if applicable
+   - Ensure that the TestCase is compatible with the environment by executing the --SKIPIF-- section of the phpt file, throwing an instance of TestResultSkip if necessary
+   - Execute the --FILE-- section of the `TestCase` using `TestMode#runScript`
+   - Compare the result using `TestCase#diffEngine` (an instance of `TestExpect`), throwing an instance of either `TestResultFail` or `TestResultSkip`
+ - Catch all instances of `TestResult` that have been thrown
+   - Attach the `TestResult` to each of the involved `TestBenchFactor`s
+   - Output the result to the log
+   - Call the `TestResult#save()` method, which saves the applicable files to disk
+ - Ensure that the environment is put back to where it was when this function was called
+   - Delete any files that were saved
+   - If this function did the setup of the `TestContext` or `TestMode`, undo that
+
