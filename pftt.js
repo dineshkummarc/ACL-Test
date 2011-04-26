@@ -37,16 +37,20 @@
 	// Include extensions to native objects
 	eval(include("{$ScriptPath}lib\\Math.inc.js"));
 	eval(include("{$ScriptPath}lib\\String.inc.js"));
+	eval(include("{$ScriptPath}lib\\Object.inc.js"));
 	eval(include("{$ScriptPath}lib\\Array.inc.js"));
 	eval(include("{$ScriptPath}lib\\Date.inc.js"));
 	eval(include("{$ScriptPath}lib\\Function.withRetry.inc.js"));
 	
     // Include other libraries
+    eval(include("{$ScriptPath}lib\\Config.inc.js"));
 	eval(include("{$ScriptPath}lib\\ConstantNamespace.inc.js"));
 	eval(include("{$ScriptPath}lib\\Stack.inc.js"));
 	eval(include("{$ScriptPath}lib\\LOG.inc.js"));
+	eval(include("{$ScriptPath}lib\\Mailer.inc.js"));
 	eval(include("{$ScriptPath}lib\\TestBenchFactor.inc.js"));
 	eval(include("{$ScriptPath}lib\\TestResult.inc.js"));
+	eval(include("{$ScriptPath}lib\\TestResultSetInspector.inc.js"));
 	eval(include("{$ScriptPath}lib\\TestContext.inc.js"));
 	eval(include("{$ScriptPath}lib\\PhpConfig.inc.js"));
 	eval(include("{$ScriptPath}lib\\TestMode.inc.js"));
@@ -56,8 +60,7 @@
 	eval(include("{$ScriptPath}lib\\TestExpect.inc.js"));
 	eval(include('{$ScriptPath}\\lib\\TestBench.inc.js'));
 	
-	WScript.StdOut.WriteLine($ScriptPath);
-    // Include config files
+	// Include config files
 	eval(include("{$ScriptPath}config\\testModes.js"));
 	eval(include("{$ScriptPath}config\\testContexts.js"));
 	eval(include("{$ScriptPath}config\\testCases.js"));
@@ -86,7 +89,7 @@ function truncateDir(dir){
 
 function runTestsFromConfig(){
 	var testBench = new TestBench( config.testBenchFactors.cases, config.testBenchFactors.contextsFiles );
-	testBench.run( config.testBenchFactors.modes );
+	return testBench.run( config.testBenchFactors.modes );
 }
 
 function defaultAction(){
@@ -94,8 +97,11 @@ function defaultAction(){
     'In fact, it does not do much at all yet, since we are still figuring out how to co-write it. '+
     '');
 }
-
-if(WScript.Arguments.Length > 0)
-    $$.ExecCommandLine();
-else
-	defaultAction();
+try{
+	if(WScript.Arguments.Length > 0)
+	    $$.ExecCommandLine();
+	else
+		defaultAction();
+} finally {
+	LOG.closeAll();
+}
