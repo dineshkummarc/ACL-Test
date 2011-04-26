@@ -78,24 +78,17 @@ function WL(line) {
 	return line;
 }
 
-/*
-function truncateDir(dir){
-	dir = dir.replace(/[\\\/]+$/,'');
-    if($$.fso.FolderExists(dir)){
-        $$( 'cmd /c rmdir {0} {1} "{2}"', '/s', '/q', dir );
-	}
-    $$.fso.CreateFolder(dir);
-}*/
-
 function runTestsFromConfig(){
 	var testBench = new TestBench( config.testBenchFactors.cases, config.testBenchFactors.contextsFiles );
 	return testBench.run( config.testBenchFactors.modes );
 }
 
 function defaultAction(){
-    WScript.StdOUt.WriteLine('This script does not actually /do/ anything unless you supply arguments. '+
-    'In fact, it does not do much at all yet, since we are still figuring out how to co-write it. '+
-    '');
+    WScript.StdOUt.WriteLine([
+    	'Attempting to run tests from current configuration:'
+	]).join('\n')
+
+	runTestsFromConfig();
 }
 try{
 	if(WScript.Arguments.Length > 0)
