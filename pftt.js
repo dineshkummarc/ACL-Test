@@ -43,10 +43,11 @@
 	eval(include("{$ScriptPath}lib\\Function.withRetry.inc.js"));
 	
     // Include other libraries
+    eval(include("{$ScriptPath}lib\\Config.inc.js"));
 	eval(include("{$ScriptPath}lib\\ConstantNamespace.inc.js"));
-	eval(include("{$ScriptPath}lib\\Mailer.inc.js"));
 	eval(include("{$ScriptPath}lib\\Stack.inc.js"));
 	eval(include("{$ScriptPath}lib\\LOG.inc.js"));
+	eval(include("{$ScriptPath}lib\\Mailer.inc.js"));
 	eval(include("{$ScriptPath}lib\\TestBenchFactor.inc.js"));
 	eval(include("{$ScriptPath}lib\\TestResult.inc.js"));
 	eval(include("{$ScriptPath}lib\\TestResultSetInspector.inc.js"));
@@ -96,8 +97,11 @@ function defaultAction(){
     'In fact, it does not do much at all yet, since we are still figuring out how to co-write it. '+
     '');
 }
-
-if(WScript.Arguments.Length > 0)
-    $$.ExecCommandLine();
-else
-	defaultAction();
+try{
+	if(WScript.Arguments.Length > 0)
+	    $$.ExecCommandLine();
+	else
+		defaultAction();
+} finally {
+	LOG.closeAll();
+}
