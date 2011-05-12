@@ -1,7 +1,6 @@
 WL('=====================================');
 var results = ACL.permute(
 					'C:\\testdir',
-					[],
 					ACL.examples.is_readable,
 					{},
 					{reduction:REDUCE.ALL}
