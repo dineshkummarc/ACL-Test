@@ -45,7 +45,6 @@
     // Include other libraries
     eval(include("{$ScriptPath}lib\\Config.inc.js"));
 	eval(include("{$ScriptPath}lib\\ConstantNamespace.inc.js"));
-	eval(include("{$ScriptPath}lib\\Stack.inc.js"));
 	eval(include("{$ScriptPath}lib\\Mailer.inc.js"));
 	eval(include("{$ScriptPath}lib\\LOG.inc.js"));
 	eval(include("{$ScriptPath}lib\\ACL.inc.js"));
