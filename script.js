@@ -4,7 +4,7 @@ var results = ACL.permute(
 					[],
 					ACL.examples.is_readable,
 					{},
-					{reduction:REDUCE.REPEAT_INHERITED,no_set:true}
+					{reduction:REDUCE.ALL}
 				);
 
 

@@ -1,12 +1,12 @@
-# ACL-Tester
+# ACL-Test
 
-ACL-Tester is a BSD-licensed automated testing framework for the Windows ACL, providing an interface to call a function in a variety of ACL contexts and return results. It is a hard fork from [Microsoft OSTC's PFTT](https://github.com/ostc/pftt).
+ACL-Test is a BSD-licensed automated testing framework for the Windows ACL, providing an interface to call a function in a variety of ACL contexts and return results. It is a hard fork from [Microsoft OSTC's PFTT](https://github.com/ostc/pftt).
 
 ## Usage
 
-PFTT must be setup in a clean environment and is executed in the Windows Scripting Host. Arguments passed to the command line are evaluated as JScript, so you can easily call any function or method, but the most common usage is to run the `script.js` file under the current configuration:
+ACL-Test must be setup in a clean environment and is executed in the Windows Scripting Host. Arguments passed to the command line are evaluated as JScript, so you can easily call any function or method, but the most common usage is to run the `script.js` file under the current configuration:
 
-    > acl-tester
+    > acl-test
 
 ## How it works
 
