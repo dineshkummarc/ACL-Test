@@ -38,6 +38,7 @@ function WL(line) {
 }
 WL( $$.WSHShell.CurrentDirectory );
 function IncludeFile( path ) {
+	WL('importing '+path)
 	path = path.Format();
 	var pathNice = getRelativePath( '{$ScriptPath}'.Format(), path )
 	,	ret = []

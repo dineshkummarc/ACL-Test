@@ -46,26 +46,12 @@
     eval(include("{$ScriptPath}lib\\Config.inc.js"));
 	eval(include("{$ScriptPath}lib\\ConstantNamespace.inc.js"));
 	eval(include("{$ScriptPath}lib\\Stack.inc.js"));
-	eval(include("{$ScriptPath}lib\\LOG.inc.js"));
 	eval(include("{$ScriptPath}lib\\Mailer.inc.js"));
-	eval(include("{$ScriptPath}lib\\TestBenchFactor.inc.js"));
-	eval(include("{$ScriptPath}lib\\TestResult.inc.js"));
-	eval(include("{$ScriptPath}lib\\TestResultSetInspector.inc.js"));
-	eval(include("{$ScriptPath}lib\\TestContext.inc.js"));
-	eval(include("{$ScriptPath}lib\\PhpConfig.inc.js"));
-	eval(include("{$ScriptPath}lib\\TestMode.inc.js"));
-	eval(include("{$ScriptPath}lib\\TestModeHTTP\\IIS.inc.js"));
-	eval(include("{$ScriptPath}lib\\TestModeHTTP\\Apache.inc.js"));
-	eval(include("{$ScriptPath}lib\\TestCase.inc.js"));
-	eval(include("{$ScriptPath}lib\\TestExpect.inc.js"));
-	eval(include('{$ScriptPath}\\lib\\TestBench.inc.js'));
+	eval(include("{$ScriptPath}lib\\LOG.inc.js"));
+	eval(include("{$ScriptPath}lib\\ACL.inc.js"));
 	
 	// Include config files
-	eval(include("{$ScriptPath}config\\testModes.js"));
-	eval(include("{$ScriptPath}config\\testContexts.js"));
-	eval(include("{$ScriptPath}config\\testCases.js"));
-    
-    eval(include("{$ScriptPath}settings.js"));
+	eval(include("{$ScriptPath}settings.js"));
     eval(tryInclude("{$ScriptPath}localSettings.js"));
 
     // Make sure we're in the console before proceeding
@@ -78,18 +64,13 @@ function WL(line) {
 	return line;
 }
 
-function runTestsFromConfig(){
-	var testBench = new TestBench( config.testBenchFactors.cases, config.testBenchFactors.contextsFiles );
-	return testBench.run( config.testBenchFactors.modes );
-}
-
 function defaultAction(){
-    WScript.StdOUt.WriteLine([
-    	'Attempting to run tests from current configuration:'
-	]).join('\n')
-
-	runTestsFromConfig();
+    WScript.StdOut.WriteLine([
+    	'Attempting to execute {$ScriptPath}script.js'.Format()
+	].join('\n'))
+	eval(tryInclude("{$ScriptPath}script.js"))
 }
+
 try{
 	if(WScript.Arguments.Length > 0)
 	    $$.ExecCommandLine();
